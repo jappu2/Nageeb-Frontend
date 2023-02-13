@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 import './App.css';
 
@@ -9,22 +9,22 @@ function App() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordRe, setPasswordRe] = useState('')
+  const [usedEmail, setUsedEmail] = useState(false)
 
   function submit(e){
     e.preventDefault();
     if (allClear()) { 
       // Send Data
       console.log('all clear.. data sent!')
-      let res = axios.post('http://127.0.0.1:8000/api/regester', {
+      let res = axios.post('http://127.0.0.1:8000/api/register', {
         name: name,
         email: email,
         password: password,
-        conferm_password: passwordRe
+        password_confirmation: passwordRe
       }).then(res=>console.log(res))
+      .catch(err=> err.response.status === 422 && setUsedEmail(true) )
       
-    } else{
-
-    }
+    } 
   }
 
   function allClear(){
@@ -34,12 +34,13 @@ function App() {
   function nameError(){
     if (!name) return 'Please enter a name!'
     if (name.split(' ').length > 3) return 'a name can\'t be more than 3 words!'
-    if (name.split('').filter(e => e == '0' || +e >= 1 && +e <= 9).length >= 1) return 'a name can\'t contain numbers'
+    if (name.split('').filter(e => e === '0' || +e >= 1 && +e <= 9).length >= 1) return 'a name can\'t contain numbers'
     return false
   }
 
   function emailError(){
     if (!email) return 'Please provide a proper email!'
+    if (usedEmail) return 'This Email has alredy been used'
     return false
   }
 
@@ -74,7 +75,7 @@ function App() {
             placeholder="e.g. Jaber.Ali@gmail.com"
             value={email}
             required
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {setEmail(e.target.value); setUsedEmail(false)}}
             />
             {emailError() && <p className="errorMessage">{emailError()}</p>}
 
