@@ -1,6 +1,5 @@
 import  React, {useState, useEffect} from "react";
-import axios
- from "axios";
+import axios  from "axios";
 export default function Users(){
     const [users, setUsers]= useState([])
     useEffect(()=>{
@@ -9,9 +8,9 @@ export default function Users(){
         .then(data => setUsers(data))
         .catch(err => console.log(err))
 
-    }, [users])
-    function  deleteUser(id){
-        axios.delete(`http://127.0.0.1:8000/api/user/delete/${id}`)
+    }, [])
+    async function  deleteUser(id){
+        await axios.delete(`http://127.0.0.1:8000/api/user/delete/${id}`)
     }
     let showUsers = users.map((user, index)=> (
         <div key={index}>
