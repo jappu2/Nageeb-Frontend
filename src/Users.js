@@ -1,4 +1,5 @@
 import  React, {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 import axios  from "axios";
 export default function Users(){
     const [users, setUsers]= useState([])
@@ -17,6 +18,7 @@ export default function Users(){
             id is:  {user.id} <br/>
             username is:  {user.name} <br/>
             user email is:  {user.email}<br/><br/>
+            <Link to={`${user.id}`} style={{color: 'blue'}}>edit</Link><br/>
             <span onClick={() => deleteUser(user.id)} style={{color: 'red'}}>Del</span>
             <br/> <hr/>
         </div>

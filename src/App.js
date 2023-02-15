@@ -8,7 +8,7 @@ import Register from './Register'
 import Login from './Login'
 import Dashboard from './Dashboard.js'
 import Users from './Users.js'
-import 
+import UpdateUser from './updateUser.js' 
 import './App.css';
 
 
@@ -25,6 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="users" element={<Users />} />
+          <Route path="users/:id" element={<UpdateUser />} />
         </Route>
 
       </Routes>
