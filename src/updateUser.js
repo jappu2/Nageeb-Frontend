@@ -20,15 +20,14 @@ export default function UserUpdate (){
     function submit(e){
       e.preventDefault();
       if (allClear()) { 
-        let res = axios.post('http://127.0.0.1:8000/api/register', {
+        let res = axios.post(`http://127.0.0.1:8000/api/user/update/${Id}`, {
           name: name,
           email: email,
           password: password,
           password_confirmation: passwordRe
         }).then(res=> {
             if (res.status === 200){
-                window.localStorage.setItem('email', email)
-                window.location.pathname = '/'
+                window.location.pathname = '/dashboard/users'
             }
         })
         .catch(err=> err.response.status === 422 && setUsedEmail(true) )
