@@ -6,9 +6,9 @@ import AboutPage from './AboutPage'
 import ContPage from './ContPage'
 import Register from './Register'
 import Login from './Login'
-import Dashboard from './Dashboard.js'
-import Users from './Users.js'
-import UpdateUser from './updateUser.js' 
+import Dashboarda from './Dashboarda.js'
+import Usersa from './Usersa.js'
+import UpdateUsera from './updateUsera.js' 
 import './App.css';
 
 
@@ -23,9 +23,9 @@ function App() {
         <Route path="/contact" element={<ContPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="users" element={<Users />} />
-          <Route path="users/:id" element={<UpdateUser />} />
+        <Route path="/dashboarda" element={<Dashboarda />}>
+          <Route path="usersa" element={<Usersa />} />
+          <Route path="usersa/:id" element={<UpdateUsera />} />
         </Route>
 
       </Routes>
