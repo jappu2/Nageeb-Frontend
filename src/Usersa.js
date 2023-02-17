@@ -12,10 +12,8 @@ export default function Usersa(){
     
     }, [])
 
-    function deleteUser(id){
-        axios.delete(`http://127.0.0.1:8000/ap/user/delete/${id}`)
-        .then(res => console.log(res))
-        .catch(err=> console.log(err))
+    async function deleteUser(id){
+        await axios.delete(`http://127.0.0.1:8000/ap/user/delete/${id}`)
     }
 
 
