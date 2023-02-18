@@ -1,14 +1,14 @@
 import React from 'react'
 import {Route, Router, Routes} from 'react-router-dom'
-import Header from './Header'
-import HomePage from './HomePage'
-import AboutPage from './AboutPage'
-import ContPage from './ContPage'
-import Register from './Register'
-import Login from './Login'
-import Dashboard from './Dashboard.js'
-import Users from './Users.js'
-import UpdateUser from './updateUser.js' 
+import Header from './componants/Header'
+import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import ContPage from './pages/ContPage'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard.js'
+import Users from './pages/Users.js'
+import UpdateUser from './pages/updateUser.js' 
 import './App.css';
 
 
